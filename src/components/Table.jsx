@@ -11,6 +11,7 @@ function Table() {
   const initialValue = 0;
   const rowReference = useRef(initialValue);
 
+  // Toggle Row
   const toggleClass = (e) => {
     const index = parseInt(e.target.attributes[0].value);
     index === rowReference.current ? (rowReference.current = null) : (rowReference.current = index);
@@ -18,6 +19,7 @@ function Table() {
   };
 
   useEffect(() => {
+    // Fetch API
     async function getData() {
       try {
         await fetch("https://dummyjson.com/products")
@@ -25,6 +27,8 @@ function Table() {
           .then((data) => {
             populateTable(data.products);
             totalItems.current = data.total;
+
+            // Cache payload in local storage
             const masterArray = JSON.stringify(data.products);
             localStorage.setItem("jsonData", masterArray);
           });
@@ -38,6 +42,7 @@ function Table() {
     }
   }, [payload]);
 
+  // Table header names
   const columns = [
     { label: "ID", reference: "id" },
     { label: "Brand", reference: "brand" },
@@ -48,6 +53,7 @@ function Table() {
     { label: "Category", reference: "category" },
   ];
 
+  // Format currency (price column)
   let USDollar = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
@@ -56,14 +62,20 @@ function Table() {
   return payload.length > 0 ? (
     <>
       <div className={classes.wrapper}>
+        {/* Header component (contains search) */}
         <Header data={payload} populateTable={populateTable} />
+
+        {/* Table header loops over columns array */}
         <div className={`${classes.tableRow} ${classes.tableHeader}`}>
           <span className={classes.showAll}></span>
           {columns.map(({ label, reference }) => {
             return <span key={reference}>{label}</span>;
           })}
         </div>
+
+        {/* Table body */}
         <div className={classes.tableBody}>
+          {/* API payload populates rows */}
           {payload.map((item) => (
             <div className={classes.tableRow} key={item.id}>
               <div className={classes.default}>
@@ -77,11 +89,19 @@ function Table() {
                 <span className={classes.cell}>{item.id}</span>
                 <span className={classes.cell}>{item.brand}</span>
                 <span className={classes.cell}>{item.rating}</span>
+
+                {/* Format price */}
                 <span className={classes.cell}>{USDollar.format(item.price)}</span>
+
+                {/* Trim title */}
                 <span className={classes.cell}>{item.title.length > 25 ? item.title.slice(0, 27) + "..." : item.title}</span>
                 <span className={classes.cell}>{item.stock}</span>
+
+                {/* Trim category */}
                 <span className={classes.cell}>{item.category.length > 8 ? item.category.slice(0, 5) + "..." : item.category}</span>
               </div>
+
+              {/* Hidden row */}
               <div className={rowReference.current === item.id ? `${classes.showRow}` : `${classes.hideRow}`}>
                 <div className={classes.imageWrapper}>
                   <p>{item.description}</p>
@@ -93,12 +113,15 @@ function Table() {
             </div>
           ))}
         </div>
+
+        {/* Table footer */}
         <footer className={classes.tableFooter}>
           <span>{payload.length} items</span>
         </footer>
       </div>
     </>
   ) : (
+    // Loader
     <div className={classes.loader}>
       <span>Loading...</span>
     </div>
