@@ -1,0 +1,60 @@
+@import url("../variables.css");
+
+.search {
+  grid-template-columns: calc(100% - 35px) 30px;
+  display: grid;
+  transform: translateY(-50%);
+  width: 100%;
+  max-width: 175px;
+  grid-column-gap: 5px;
+  position: absolute;
+  top: 50%;
+  right: 0;
+}
+
+input {
+  outline: none;
+  border-radius: 3px;
+  border: none;
+  font-size: 14px;
+  padding: 3px;
+}
+
+button {
+  padding: 5px;
+  border-radius: 3px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  color: var(--medium-blue);
+  background-color: var(--white);
+  transition: all 0.25s;
+}
+
+button:hover {
+  background-color: var(--medium-blue);
+  color: var(--white);
+}
+
+.header {
+  background-color: var(--medium-blue);
+  padding: 15px;
+  font-size: 20px;
+  position: sticky;
+  z-index: 1;
+  top: 0;
+}
+
+.wrapper {
+  overflow: auto;
+  max-width: 1410px;
+  position: relative;
+  margin: 0 auto;
+}
+
+h1 {
+  color: var(--white);
+  font-size: 18px;
+  margin: 0;
+  float: left;
+}
