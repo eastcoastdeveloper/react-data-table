@@ -62,7 +62,8 @@ input {
 @media screen and (max-width: 786px){
   .header {
     position: absolute;
-    width: calc(100% - 72px);
-    top: 11px;
+    width: 100%;
+    top: 0;
+    box-sizing: border-box;
   }
 }
