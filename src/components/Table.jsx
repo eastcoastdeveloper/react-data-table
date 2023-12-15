@@ -7,6 +7,7 @@ import Loader from "./Loader";
 function Table() {
   const [payload, populateTable] = useState({});
   const [defaultRow, showHiddenRow] = useState();
+  const [hasError, setError] = useState(false);
 
   const totalItems = useRef(0);
   const initialValue = 0;
@@ -35,11 +36,14 @@ function Table() {
           });
       } catch (error) {
         console.log("%c Something terrible has happened. Oh my goodness!", "background: rgb(255,15,15); color: #ffffff");
-        return <Error />;
+        setError(true);
       }
     }
     if (!payload.length > 0) {
       getData();
+    }
+    if (hasError) {
+      return <Error />;
     }
   }, [payload]);
 
@@ -121,6 +125,8 @@ function Table() {
         </footer>
       </div>
     </>
+  ) : hasError ? (
+    <Error />
   ) : (
     <Loader />
   );
