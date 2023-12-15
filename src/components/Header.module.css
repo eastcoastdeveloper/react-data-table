@@ -58,3 +58,11 @@ input {
   position: relative;
   margin: 0 auto;
 }
+
+@media screen and (max-width: 786px){
+  .header {
+    position: absolute;
+    width: calc(100% - 72px);
+    top: 11px;
+  }
+}

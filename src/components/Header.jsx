@@ -44,7 +44,7 @@ function Header(props) {
   return (
     <header className={classes.header}>
       <div className={classes.wrapper}>
-        <h1>React Fetch & Search</h1>
+        <h1>Data Table</h1>
         <div className={classes.search}>
           <input type="text" onChange={handleFilter} />
           <button type="button" onClick={resetInput}>

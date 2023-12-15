@@ -150,13 +150,15 @@ function Table() {
                 </div>
               ))}
             </div>
-          </div>
-        </div>
-
-        {/* Table footer */}
+                   {/* Table footer */}
         <footer className={classes.tableFooter}>
           <span>{payload.length} items</span>
         </footer>
+          </div>
+        
+
+ 
+        </div>
       </div>
     </>
   ) : hasError ? (
