@@ -108,7 +108,7 @@ img {
 }
 
 .wrapper {
-  max-width: 760px;
+  max-width: 768px;
   margin: 0 auto;
   max-height: 600px;
   overflow: auto;
