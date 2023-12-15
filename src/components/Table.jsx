@@ -9,6 +9,7 @@ function Table() {
   const [defaultRow, showHiddenRow] = useState();
   const [hasError, setError] = useState(false);
   const [showAll, toggleAllRows] = useState(false);
+  const [sortedColumn, setSortedColumn] = useState("");
 
   const totalItems = useRef(0);
   const initialValue = 0;
@@ -23,6 +24,22 @@ function Table() {
 
   const expandAllRows = () => {
     toggleAllRows(!showAll);
+  };
+
+  const filterByType = (e) => {
+    const type = e.target.innerText.toLowerCase();
+    setSortedColumn(type);
+    payload.sort((a, b) => {
+      if (a[type] < b[type]) {
+        return -1;
+      }
+      if (a[type] > b[type]) {
+        return 1;
+      }
+      return 0;
+    });
+    const sorted = payload.slice();
+    populateTable(sorted);
   };
 
   useEffect(() => {
@@ -83,7 +100,11 @@ function Table() {
             {showAll && <span>&#10003;</span>}
           </div>
           {columns.map(({ label, reference }) => {
-            return <span key={reference}>{label}</span>;
+            return (
+              <span key={reference} onClick={filterByType} className={sortedColumn == reference ? classes.activeColumn : null}>
+                {label}
+              </span>
+            );
           })}
         </div>
 

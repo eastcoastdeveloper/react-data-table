@@ -1,5 +1,13 @@
 @import url("../variables.css");
 
+.activeColumn::after {
+  content: "•";
+  margin-left: 5px;
+  font-size: 20px;
+  position: absolute;
+  transform: translate(-2px, -2px);
+}
+
 .default + div p {
   margin: auto;
 }
@@ -72,7 +80,7 @@ img {
 .tableRow,
 .default {
   display: grid;
-  grid-template-columns: 30px 25px 180px 70px 85px 220px 55px auto;
+  grid-template-columns: 30px 25px 180px 70px 85px 210px 60px auto;
   font: normal 14px sans-serif;
 }
 
@@ -119,4 +127,8 @@ img {
   top: 47px;
   padding: 10px;
   z-index: 1;
+}
+
+.wrapper .tableHeader span {
+  cursor: pointer;
 }
