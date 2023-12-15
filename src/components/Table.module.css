@@ -134,6 +134,9 @@ img {
 }
 
 @media screen and (max-width:768px){
+  .tableWrapper {
+    position: absolute;
+  }
   .wrapper {
     margin: 0 20px;
     max-width: unset;
