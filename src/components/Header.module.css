@@ -53,13 +53,13 @@ input {
 }
 
 .wrapper {
-  overflow: auto;
   max-width: 1410px;
   position: relative;
   margin: 0 auto;
+  height: 17px;
 }
 
-@media screen and (max-width: 786px){
+@media screen and (max-width: 786px) {
   .header {
     position: sticky;
     width: 100%;
