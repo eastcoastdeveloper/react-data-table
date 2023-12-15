@@ -101,7 +101,7 @@ img {
 
 .wrapper {
   max-width: 760px;
-  margin: 20px auto 0 auto;
+  margin: 0 auto;
   max-height: 600px;
   overflow: auto;
   border: 1px solid var(--midnight-blue);

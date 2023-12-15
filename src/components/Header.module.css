@@ -1,7 +1,6 @@
 @import url("../variables.css");
 
 button {
-  padding: 5px;
   border-radius: 3px;
   outline: none;
   border: none;
@@ -42,6 +41,7 @@ input {
 
 .search {
   grid-template-columns: calc(100% - 35px) 30px;
+  padding: 2px;
   display: grid;
   transform: translateY(-50%);
   width: 100%;

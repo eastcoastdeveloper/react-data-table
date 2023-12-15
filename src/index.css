@@ -136,9 +136,13 @@ table {
 
 html,
 #root,
-main,
 body {
   margin: 0;
   padding: 0;
   height: 100%;
+}
+
+main {
+  padding-top: 10px;
+  height: calc(100% - 10px);
 }
