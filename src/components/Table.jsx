@@ -94,60 +94,62 @@ function Table() {
         {/* Header component (contains search) */}
         <Header data={payload} populateTable={populateTable} />
 
-        <div className={tableWrapper}>
-          {/* Table header loops over columns array */}
-          <div className={`${classes.tableRow} ${classes.tableHeader}`}>
-            <div onClick={expandAllRows} className={classes.showAll}>
-              {showAll && <span>&#10003;</span>}
-            </div>
-            {columns.map(({ label, reference }) => {
-              return (
-                <span key={reference} onClick={filterByType} className={sortedColumn == reference ? classes.activeColumn : null}>
-                  {label}
-                </span>
-              );
-            })}
-          </div>
-
-          {/* Table body */}
-          <div className={classes.tableBody}>
-            {/* API payload populates rows */}
-            {payload.map((item) => (
-              <div className={classes.tableRow} key={item.id}>
-                <div className={classes.default}>
-                  <span
-                    id={item.id}
-                    onClick={toggleClass}
-                    className={rowReference.current === item.id || showAll ? `${classes.rotateCaret}` : `${classes.defaultCaret}`}
-                  >
-                    &#x25B6;
+        <div className={classes.mobileWrapper}>
+          <div className={classes.tableWrapper}>
+            {/* Table header loops over columns array */}
+            <div className={`${classes.tableRow} ${classes.tableHeader}`}>
+              <div onClick={expandAllRows} className={classes.showAll}>
+                {showAll && <span>&#10003;</span>}
+              </div>
+              {columns.map(({ label, reference }) => {
+                return (
+                  <span key={reference} onClick={filterByType} className={sortedColumn == reference ? classes.activeColumn : null}>
+                    {label}
                   </span>
-                  <span className={classes.cell}>{item.id}</span>
-                  <span className={classes.cell}>{item.brand}</span>
-                  <span className={classes.cell}>{item.rating}</span>
+                );
+              })}
+            </div>
 
-                  {/* Format price */}
-                  <span className={classes.cell}>{USDollar.format(item.price)}</span>
+            {/* Table body */}
+            <div className={classes.tableBody}>
+              {/* API payload populates rows */}
+              {payload.map((item) => (
+                <div className={classes.tableRow} key={item.id}>
+                  <div className={classes.default}>
+                    <span
+                      id={item.id}
+                      onClick={toggleClass}
+                      className={rowReference.current === item.id || showAll ? `${classes.rotateCaret}` : `${classes.defaultCaret}`}
+                    >
+                      &#x25B6;
+                    </span>
+                    <span className={classes.cell}>{item.id}</span>
+                    <span className={classes.cell}>{item.brand}</span>
+                    <span className={classes.cell}>{item.rating}</span>
 
-                  {/* Trim title */}
-                  <span className={classes.cell}>{item.title.length > 25 ? item.title.slice(0, 27) + "..." : item.title}</span>
-                  <span className={classes.cell}>{item.stock}</span>
+                    {/* Format price */}
+                    <span className={classes.cell}>{USDollar.format(item.price)}</span>
 
-                  {/* Trim category */}
-                  <span className={classes.cell}>{item.category.length > 8 ? item.category.slice(0, 5) + "..." : item.category}</span>
-                </div>
+                    {/* Trim title */}
+                    <span className={classes.cell}>{item.title.length > 25 ? item.title.slice(0, 27) + "..." : item.title}</span>
+                    <span className={classes.cell}>{item.stock}</span>
 
-                {/* Hidden row */}
-                <div className={rowReference.current === item.id || showAll ? `${classes.showRow}` : `${classes.hideRow}`}>
-                  <div className={classes.imageWrapper}>
-                    <p>{item.description}</p>
-                    <div>
-                      <img src={item.images[0]} />
+                    {/* Trim category */}
+                    <span className={classes.cell}>{item.category.length > 8 ? item.category.slice(0, 5) + "..." : item.category}</span>
+                  </div>
+
+                  {/* Hidden row */}
+                  <div className={rowReference.current === item.id || showAll ? `${classes.showRow}` : `${classes.hideRow}`}>
+                    <div className={classes.imageWrapper}>
+                      <p>{item.description}</p>
+                      <div>
+                        <img src={item.images[0]} />
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
 
