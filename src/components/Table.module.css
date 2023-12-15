@@ -1,5 +1,80 @@
 @import url("../variables.css");
 
+.default + div p {
+  margin: auto;
+}
+
+.default + div {
+  transition: all 0.25s;
+  background-color: rgba(0, 0, 0, 0.3);
+  grid-column: 1/-1;
+  width: 100%;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.default span:first-child {
+  color: var(--midnight-blue);
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.defaultCaret {
+  transform: translate(0, 2px);
+}
+
+.hideRow {
+  max-height: 0;
+}
+
+img {
+  width: 100%;
+  display: block;
+}
+
+.imageWrapper {
+  display: grid;
+  grid-template-columns: repeat(2, calc(50% - 10px));
+  margin: 10px;
+  grid-column-gap: 20px;
+}
+
+.imageWrapper > div {
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--midnight-blue);
+}
+
+.loader {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: var(--white);
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: 100%;
+  display: flex;
+}
+
+.loader span {
+  margin: auto;
+}
+
+.rotateCaret {
+  transform: rotate(90deg) translate(10px, 12px);
+}
+
+.showAll {
+  background-color: var(--white);
+  border: 1px solid var(--midnight-blue);
+  width: 15px;
+}
+
+.showRow {
+  max-height: 500px !important;
+  margin: 5px 0;
+}
+
 .tableRow,
 .default {
   display: grid;
@@ -28,81 +103,6 @@
   bottom: 0;
   text-align: right;
   padding: 5px 10px;
-}
-
-.hideRow {
-  max-height: 0;
-}
-
-.default + div p {
-  margin: auto;
-}
-
-.showAll {
-  background-color: var(--white);
-  border: 1px solid var(--midnight-blue);
-  width: 15px;
-}
-
-.default + div {
-  transition: all 0.25s;
-  background-color: rgba(0, 0, 0, 0.3);
-  grid-column: 1/-1;
-  width: 100%;
-  border-radius: 4px;
-  overflow: hidden;
-}
-
-.default span:first-child {
-  color: var(--midnight-blue);
-  font-size: 12px;
-  cursor: pointer;
-}
-
-.rotateCaret {
-  transform: rotate(90deg) translate(10px, 12px);
-}
-
-.defaultCaret {
-  transform: translate(0, 2px);
-}
-
-.imageWrapper {
-  display: grid;
-  grid-template-columns: repeat(2, calc(50% - 10px));
-  margin: 10px;
-  grid-column-gap: 20px;
-}
-
-.imageWrapper > div {
-  border-radius: 4px;
-  overflow: hidden;
-  border: 1px solid var(--midnight-blue);
-}
-
-img {
-  width: 100%;
-  display: block;
-}
-
-.loader {
-  position: absolute;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: var(--white);
-  width: 100%;
-  top: 0;
-  left: 0;
-  height: 100%;
-  display: flex;
-}
-
-.loader span {
-  margin: auto;
-}
-
-.showRow {
-  max-height: 500px !important;
-  margin: 5px 0;
 }
 
 .wrapper {
