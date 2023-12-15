@@ -45,21 +45,6 @@ img {
   border: 1px solid var(--midnight-blue);
 }
 
-.loader {
-  position: absolute;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: var(--white);
-  width: 100%;
-  top: 0;
-  left: 0;
-  height: 100%;
-  display: flex;
-}
-
-.loader span {
-  margin: auto;
-}
-
 .rotateCaret {
   transform: rotate(90deg) translate(10px, 12px);
 }

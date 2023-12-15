@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import classes from "./Table.module.css";
 import Error from "./Error";
 import Header from "./Header";
+import Loader from "./Loader";
 
 function Table() {
   const [payload, populateTable] = useState({});
@@ -121,10 +122,7 @@ function Table() {
       </div>
     </>
   ) : (
-    // Loader
-    <div className={classes.loader}>
-      <span>Loading...</span>
-    </div>
+    <Loader />
   );
 }
 
