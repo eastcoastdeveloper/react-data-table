@@ -94,6 +94,7 @@ function Table() {
         {/* Header component (contains search) */}
         <Header data={payload} populateTable={populateTable} />
 
+<div>
         {/* Table header loops over columns array */}
         <div className={`${classes.tableRow} ${classes.tableHeader}`}>
           <div onClick={expandAllRows} className={classes.showAll}>
@@ -147,6 +148,7 @@ function Table() {
               </div>
             </div>
           ))}
+        </div>
         </div>
 
         {/* Table footer */}
