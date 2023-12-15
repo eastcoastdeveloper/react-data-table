@@ -51,8 +51,17 @@ img {
 
 .showAll {
   background-color: var(--white);
+  position: relative;
+  cursor: pointer;
   border: 1px solid var(--midnight-blue);
   width: 15px;
+}
+
+.showAll span {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  left: 7px;
 }
 
 .showRow {

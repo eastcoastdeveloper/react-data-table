@@ -8,6 +8,7 @@ function Table() {
   const [payload, populateTable] = useState({});
   const [defaultRow, showHiddenRow] = useState();
   const [hasError, setError] = useState(false);
+  const [showAll, toggleAllRows] = useState(false);
 
   const totalItems = useRef(0);
   const initialValue = 0;
@@ -18,6 +19,10 @@ function Table() {
     const index = parseInt(e.target.attributes[0].value);
     index === rowReference.current ? (rowReference.current = null) : (rowReference.current = index);
     showHiddenRow(!defaultRow);
+  };
+
+  const expandAllRows = () => {
+    toggleAllRows(!showAll);
   };
 
   useEffect(() => {
@@ -42,6 +47,8 @@ function Table() {
     if (!payload.length > 0) {
       getData();
     }
+
+    // Error component
     if (hasError) {
       return <Error />;
     }
@@ -72,7 +79,9 @@ function Table() {
 
         {/* Table header loops over columns array */}
         <div className={`${classes.tableRow} ${classes.tableHeader}`}>
-          <span className={classes.showAll}></span>
+          <div onClick={expandAllRows} className={classes.showAll}>
+            {showAll && <span>&#10003;</span>}
+          </div>
           {columns.map(({ label, reference }) => {
             return <span key={reference}>{label}</span>;
           })}
@@ -87,7 +96,7 @@ function Table() {
                 <span
                   id={item.id}
                   onClick={toggleClass}
-                  className={rowReference.current === item.id ? `${classes.rotateCaret}` : `${classes.defaultCaret}`}
+                  className={rowReference.current === item.id || showAll ? `${classes.rotateCaret}` : `${classes.defaultCaret}`}
                 >
                   &#x25B6;
                 </span>
@@ -107,7 +116,7 @@ function Table() {
               </div>
 
               {/* Hidden row */}
-              <div className={rowReference.current === item.id ? `${classes.showRow}` : `${classes.hideRow}`}>
+              <div className={rowReference.current === item.id || showAll ? `${classes.showRow}` : `${classes.hideRow}`}>
                 <div className={classes.imageWrapper}>
                   <p>{item.description}</p>
                   <div>
