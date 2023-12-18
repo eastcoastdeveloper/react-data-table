@@ -55,7 +55,6 @@ img {
 
 .mobileWrapper {
   position: relative;
-  height: calc(600px - 50px);
 }
 
 .rotateCaret {
@@ -85,7 +84,7 @@ img {
 .tableRow,
 .default {
   display: grid;
-  grid-template-columns: 30px 25px 180px 70px 85px 210px 60px auto;
+  grid-template-columns: 30px 40px 190px 70px 85px 205px 60px auto;
   font: normal 14px sans-serif;
 }
 
@@ -110,13 +109,16 @@ img {
   bottom: 0;
   text-align: right;
   padding: 5px 10px;
+  max-width: calc(100vw - 62px);
+  left: 0;
+  right: 0;
 }
 
 .wrapper {
   max-width: 768px;
   position: relative;
   margin: 0 auto;
-  max-height: 600px;
+  height: 600px;
   overflow: auto;
   border: 1px solid var(--midnight-blue);
   color: var(--midnight-blue);
@@ -147,6 +149,5 @@ img {
   .wrapper {
     margin: 0 20px;
     max-width: unset;
-    border-radius: 0;
   }
 }

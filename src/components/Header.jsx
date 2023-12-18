@@ -36,7 +36,7 @@ function Header(props) {
   // Reset to empty string and replace refined array with local storage array
   const resetInput = () => {
     value = "";
-    let retString = localStorage.getItem("jsonData");
+    let retString = localStorage.getItem("dataKey");
     let arr = JSON.parse(retString);
     props.populateTable(arr);
   };
